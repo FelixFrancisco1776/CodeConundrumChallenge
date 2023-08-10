@@ -3,11 +3,12 @@ const printHighscores = () => {
 
   highscores.sort((a, b) => b.score - a.score);
 
+  const olEl = document.getElementById('highscores');
+  olEl.innerHTML = ''; // Clear previous entries
+
   highscores.forEach((score) => {
     const liTag = document.createElement('li');
     liTag.textContent = `${score.initials} - ${score.score}`;
-
-    const olEl = document.getElementById('highscores');
     olEl.appendChild(liTag);
   });
 };
@@ -17,60 +18,7 @@ const clearHighscores = () => {
   window.location.reload();
 };
 
-document.getElementById('clear').addEventListener('click', clearHighscores);
+const clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', clearHighscores);
 
 printHighscores();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function printHighscores() {
-//   // either get scores from localstorage or set to empty array
-//   var highscores = JSON.parse(window.localStorage.getItem('highscores')) || [];
-
-//   // sort highscores by score property in descending order
-//   highscores.sort(function (a, b) {
-//     return b.score - a.score;
-//   });
-
-//   for (var i = 0; i < highscores.length; i += 1) {
-//     // create li tag for each high score
-//     var liTag = document.createElement('li');
-//     liTag.textContent = highscores[i].initials + ' - ' + highscores[i].score;
-
-//     // display on page
-//     var olEl = document.getElementById('highscores');
-//     olEl.appendChild(liTag);
-//   }
-// }
-
-// function clearHighscores() {
-//   window.localStorage.removeItem('highscores');
-//   window.location.reload();
-// }
-
-// document.getElementById('clear').onclick = clearHighscores;
-
-// // run function when page loads
-// printHighscores();
